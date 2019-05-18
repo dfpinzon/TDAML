@@ -1,18 +1,9 @@
 # Introduction
 
 This tutorial accompanies the NSF-CBMS Conference and Software Day on Topological Methods in Machine Learning and Artificial Intelligence, http://blogs.cofc.edu/cbms-tda2019/.
-It was written by Henry Adams, Melissa McGuirl, and Yitzchak Solomon. It relies on code from scikit-learn (http://scikit-learn.org/stable/), Ripser (https://github.com/Ripser/ripser), and a variety of other places, referenced throughout the text.
+It was written by Henry Adams, Melissa McGuirl, and Yitzchak Solomon. It uses code from scikit-learn (http://scikit-learn.org/stable/), Ripser (https://github.com/Ripser/ripser), and a variety of other places, referenced throughout the text.
 
 If you code up a cool related example, please let us know and we may add it to this repository!
-
-# Python
-
-The code in this repository is written in Python. 
-
-Installing and running new code is annoying, especially if it is in a language (perhaps Python) that is unfamiliar to you. Nevertheless, we believe that it is extremely important for all practitioners of machine learning to have some exposure to Python. For this reason, the time you spend getting python running on your machine is time well spent, even though this can feel like a frustrating investment of time.
-
-If you don't yet have Python, and if you are a PC user, then we recommend installing Anaconda (https://www.anaconda.com/download/#macos). If you don't yet have Python, and if you are a Mac user, then we recommend installing Python 2.7.15 at (https://www.python.org/downloads/release/python-2715/). We expect the code to work with an existing version of Python that you may happen to have already.
-
 
 
 # Persistent homology
@@ -115,6 +106,51 @@ Optical primary circle
 
 The projection of _X(300,30)_ above shows a circle. It is called the optical primary circle and is parameterized as shown above.
 
+## Exercises on persistent homology
+
+_Exercise_:
+Write a script (say in Python, or some other language) that selects 500 points uniformly at random (or approximately uniformly at random) from the annulus _{(x,y)|0.9<sup>2</sup>&le;x<sup>2</sup>+y<sup>2</sup>&le;1.1<sup>2</sup>}_ in _R<sup>2</sup>_. Compute its persistent homology barcodes using ripser.
+
+_Exercise_:
+Write a script (say in Python, or some other language) that selects 500 points uniformly at random (or approximately uniformly at random) from the "coconut shell" _{(x,y,z)|0.9<sup>2</sup>&le;x<sup>2</sup>+y<sup>2</sup>+z<sup>2</sup>&le;1.1<sup>2</sup>}_ in _R<sup>3</sup>_. Compute its persistent homology barcodes using ripser.
+
+_Exercise_:
+Write a Python script (or code in some other language) that will select _n_ even-spaced points from the unit circle in the plane. Compute the persistent homology of the Vietoris-Rips complex of 4 points, 6, 9, 12, 15 points, and 20 equally spaced points.
+
+Do you get ever homology above dimension 1?
+
+_Exercise_:
+Find a planar dataset _Z_ in _R<sup>2</sup>_ and a filtration value _t_ such that _VR(Z,t)_ has nonzero _Betti<sub>2</sub>_. Do a computation in ripser to confirm your answer. 
+
+_Exercise_:
+Find a planar dataset _Z_ in _R<sup>2</sup>_ and a filtration value _t_ such that _VR(Z,t)_ has nonzero _Betti<sub>6</sub>_. Do a computation in ripser to confirm your answer. 
+
+_Exercise_:
+Let _X_ be the 8 vertices of the cube in _R<sup>3</sup>_: _X={(&plusmn;1, &plusmn;1, &plusmn;1)}_. Equip _X_ with the Euclidean metric. Compute the persistent homology of the Vietoris-Rips complex of _X_. Do you get ever homology above dimension 2?
+
+_Exercise_:
+One way to produce a torus is to take a square _[0, 1] x [0, 1]_ and then identify opposite sides. This is called a flat torus. More explicitly, the flat torus is the quotient space ([0, 1] x [0, 1]) / ~, where (0, y) ~ (1, y) for all _y_ in _[0, 1]_ and where _(x, 0) ~ (x, 1)_ for all _x_ in _[0, 1]_. The Euclidean metric on _[0, 1] x [0, 1]_ induces a metric on the flat torus. For example, in the induced metric on the flat torus, the distance between _(0, 1/2)_ and _(1, 1/2)_ is zero, since these two points are identified. The distance between _(1/10, 1/2)_ and _(9/10, 1/2)_ is _2/10_, by passing through the point _(0, 1/2) ~ (1, 1/2)_.
+
+Write a Python script (or code in another language) that selects 1,000 random points from the square _[0, 1] x [0, 1]_ and then computes the 1,000 x 1,000 distance matrix for these points under the induced metric on the flat torus. Use Ripser to compute the persistent homology of this metric space.
+
+_Exercise_:
+One way to produce a Klein bottle is to take a square _[0, 1] x [0, 1]_ and then identify opposite edges, with the left and right sides identified with a twist. This is called a flat Klein bottle. More explicitly, the flat Klein bottle is the quotient space ([0, 1] x [0, 1]) / ~, where _(0, y) ~ (1, 1 - y)_ for all _y_ in _[0, 1]_ and where _(x, 0) ~ (x, 1)_ for all _x_ in _[0, 1]_. The Euclidean metric on _[0, 1] x [0, 1]_ induces a metric on the flat Klein bottle. For example, in the induced metric on the flat Klein bottle, the distance between _(0, 4/10)_ and _(1, 6/10)_ is zero, since these two points are identified. The distance between _(1/10, 4/10)_ and _(9/10, 6/10)_ is _2/10_, by passing through the point _(0, 4/10) ~ (1, 6/10)_.
+
+Write a Python script (or code in another language) that selects 1,000 random points from the square _[0, 1] x [0, 1]_ and then computes the 1,000 x 1,000 distance matrix for these points under the induced metric on the flat Klein bottle. Use Ripser to compute the persistent homology of this metric space.
+
+_Exercise_:
+One way to produce a projective plane is to take the unit sphere _S<sup>2</sup>_ in _R<sup>3</sup>_ and then identify antipodal points. More explicitly, the projective plane is the quotient space _S<sup>2</sup>_ / (_x_ ~ _-x_). The Euclidean metric on _S<sup>2</sup>_ induces a metric on the projective plane.
+
+Write a Python script (or code in another language)  that selects 1,000 random points from the unit sphere _S<sup>2</sup>_ in _R<sup>3</sup>_ and then computes the 1,000 x 1,000 distance matrix for these points under the induced metric on the projective plane. Use Ripser to compute the persistent homology of this metric space.
+
+# Python
+
+The code in this repository is written in Python. 
+
+Installing and running new code is annoying, especially if it is in a language (perhaps Python) that is unfamiliar to you. Nevertheless, we believe that it is extremely important for all practitioners of machine learning to have some exposure to Python. For this reason, the time you spend getting python running on your machine is time well spent, even though this can feel like a frustrating investment of time.
+
+If you don't yet have Python, and if you are a PC user, then we recommend installing Anaconda (https://www.anaconda.com/download/#macos). If you don't yet have Python, and if you are a Mac user, then we recommend installing Python 2.7.15 at (https://www.python.org/downloads/release/python-2715/). We expect the code to work with an existing version of Python that you may happen to have already.
+
 ## Ripser on your machine
 
 A more advanced (but very useful) step is to now download Ripser to your machine and to run it locally. This allows you to perform larger computations. Ripser is written in C++. You may download the code for Ripser at https://github.com/Ripser/ripser, which also contains installation instructions. Minimal installation instructions are listed below
@@ -180,42 +216,7 @@ then plots the corresponding persistence diagrams in your current directory.
 
 Melissa's code is only written to work with input metric space data in the form of a distance matrix, but one could edit it to also work with input metric space data in the form of a point cloud, for example.
 
-## Exercises on persistent homology
 
-_Exercise_:
-Write a script (say in Python, or some other language) that selects 500 points uniformly at random (or approximately uniformly at random) from the annulus _{(x,y)|0.9<sup>2</sup>&le;x<sup>2</sup>+y<sup>2</sup>&le;1.1<sup>2</sup>}_ in _R<sup>2</sup>_. Compute its persistent homology barcodes using ripser.
-
-_Exercise_:
-Write a script (say in Python, or some other language) that selects 500 points uniformly at random (or approximately uniformly at random) from the "coconut shell" _{(x,y,z)|0.9<sup>2</sup>&le;x<sup>2</sup>+y<sup>2</sup>+z<sup>2</sup>&le;1.1<sup>2</sup>}_ in _R<sup>3</sup>_. Compute its persistent homology barcodes using ripser.
-
-_Exercise_:
-Write a Python script (or code in some other language) that will select _n_ even-spaced points from the unit circle in the plane. Compute the persistent homology of the Vietoris-Rips complex of 4 points, 6, 9, 12, 15 points, and 20 equally spaced points.
-
-Do you get ever homology above dimension 1?
-
-_Exercise_:
-Find a planar dataset _Z_ in _R<sup>2</sup>_ and a filtration value _t_ such that _VR(Z,t)_ has nonzero _Betti<sub>2</sub>_. Do a computation in ripser to confirm your answer. 
-
-_Exercise_:
-Find a planar dataset _Z_ in _R<sup>2</sup>_ and a filtration value _t_ such that _VR(Z,t)_ has nonzero _Betti<sub>6</sub>_. Do a computation in ripser to confirm your answer. 
-
-_Exercise_:
-Let _X_ be the 8 vertices of the cube in _R<sup>3</sup>_: _X={(&plusmn;1, &plusmn;1, &plusmn;1)}_. Equip _X_ with the Euclidean metric. Compute the persistent homology of the Vietoris-Rips complex of _X_. Do you get ever homology above dimension 2?
-
-_Exercise_:
-One way to produce a torus is to take a square _[0, 1] x [0, 1]_ and then identify opposite sides. This is called a flat torus. More explicitly, the flat torus is the quotient space ([0, 1] x [0, 1]) / ~, where (0, y) ~ (1, y) for all _y_ in _[0, 1]_ and where _(x, 0) ~ (x, 1)_ for all _x_ in _[0, 1]_. The Euclidean metric on _[0, 1] x [0, 1]_ induces a metric on the flat torus. For example, in the induced metric on the flat torus, the distance between _(0, 1/2)_ and _(1, 1/2)_ is zero, since these two points are identified. The distance between _(1/10, 1/2)_ and _(9/10, 1/2)_ is _2/10_, by passing through the point _(0, 1/2) ~ (1, 1/2)_.
-
-Write a Python script (or code in another language) that selects 1,000 random points from the square _[0, 1] x [0, 1]_ and then computes the 1,000 x 1,000 distance matrix for these points under the induced metric on the flat torus. Use Ripser to compute the persistent homology of this metric space.
-
-_Exercise_:
-One way to produce a Klein bottle is to take a square _[0, 1] x [0, 1]_ and then identify opposite edges, with the left and right sides identified with a twist. This is called a flat Klein bottle. More explicitly, the flat Klein bottle is the quotient space ([0, 1] x [0, 1]) / ~, where _(0, y) ~ (1, 1 - y)_ for all _y_ in _[0, 1]_ and where _(x, 0) ~ (x, 1)_ for all _x_ in _[0, 1]_. The Euclidean metric on _[0, 1] x [0, 1]_ induces a metric on the flat Klein bottle. For example, in the induced metric on the flat Klein bottle, the distance between _(0, 4/10)_ and _(1, 6/10)_ is zero, since these two points are identified. The distance between _(1/10, 4/10)_ and _(9/10, 6/10)_ is _2/10_, by passing through the point _(0, 4/10) ~ (1, 6/10)_.
-
-Write a Python script (or code in another language) that selects 1,000 random points from the square _[0, 1] x [0, 1]_ and then computes the 1,000 x 1,000 distance matrix for these points under the induced metric on the flat Klein bottle. Use Ripser to compute the persistent homology of this metric space.
-
-_Exercise_:
-One way to produce a projective plane is to take the unit sphere _S<sup>2</sup>_ in _R<sup>3</sup>_ and then identify antipodal points. More explicitly, the projective plane is the quotient space _S<sup>2</sup>_ / (_x_ ~ _-x_). The Euclidean metric on _S<sup>2</sup>_ induces a metric on the projective plane.
-
-Write a Python script (or code in another language)  that selects 1,000 random points from the unit sphere _S<sup>2</sup>_ in _R<sup>3</sup>_ and then computes the 1,000 x 1,000 distance matrix for these points under the induced metric on the projective plane. Use Ripser to compute the persistent homology of this metric space.
 
 # Topological feature vectors - Euler curves
 
