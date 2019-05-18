@@ -106,6 +106,11 @@ Optical primary circle
 
 The projection of _X(300,30)_ above shows a circle. It is called the optical primary circle and is parameterized as shown above.
 
+We can also consider the 3-circle model, which arises from the dataset _X(15,30)_ that corresponds to a more local estimate of density. This dataset is in the file `Charleston-TDA-ML/persistent-homology/point_clouds/optical_k15_points.txt`. So that the computation finishes, we have asked Ripser to compute only up to scale parameter 1.2 (one can compute larger examples after downloading Ripser to one's machine, as in a later section). Only a subset of the intervals are shown below.
+![](https://github.com/henryadams/TDA-ML/wiki/optical_k15_points_output0.png)
+![](https://github.com/henryadams/TDA-ML/wiki/optical_k15_points_output1.png)
+The barcodes with one connected component and five 1-dimensional holes correspond to the 3-circle model for the core subset _X(15,30)_. 
+
 ## Exercises on persistent homology
 
 _Exercise_:
