@@ -102,7 +102,7 @@ Projection of _X(300,30)_
 
 ![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/primaryCircle.png)
 
-Optical primary circle
+Primary circle model for optical images
 
 The projection of _X(300,30)_ above shows a circle. It is called the optical primary circle and is parameterized as shown above.
 
@@ -110,6 +110,18 @@ We can also consider the 3-circle model, which arises from the dataset _X(15,30)
 ![](https://github.com/henryadams/Charleston-TDA-ML/wiki/optical_k15_points_output0.png)
 ![](https://github.com/henryadams/Charleston-TDA-ML/wiki/optical_k15_points_output1.png)
 The barcodes with one connected component and five 1-dimensional holes correspond to the 3-circle model for the core subset _X(15,30)_. Much more convincing (longer) intervals can be obtained by using more points and computing with Ripser downloaded to your local machine.
+
+We plot the projection of these points onto the first two linear gradient Discrete Cosine Transform basis vectors.
+
+![](https://github.com/henryadams/Charleston-TDA-MLwiki/nk15c30.png)
+
+Projection of more points from _X(15,30)_
+
+![](https://github.com//henryadams/Charleston-TDA-MLwiki/threeCircle.png)
+
+Three circle model for optical images
+
+The above is called the three-circle primary circle, with its parameterization as shown.
 
 ## Exercises on persistent homology
 
