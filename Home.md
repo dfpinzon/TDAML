@@ -8,7 +8,7 @@ If you code up a cool related example, please let us know and we may add it to t
 
 # Persistent homology
 
-For Henry's "introduction to persistent homology" slides from the ICERM TRIPODS bootcamp, please see http://www.math.colostate.edu/~adams/talks/AnIntroductionToAppliedAndComputationalTopology.pdf
+For Henry's "introduction to persistent homology" slides, please see http://www.math.colostate.edu/~adams/talks/AnIntroductionToAppliedAndComputationalTopology.pdf
 
 We will be using Ripser (https://github.com/Ripser/ripser) in this tutorial. Some slides about how Ripser works are available at http://ulrich-bauer.org/ripser-talk.pdf.
 
