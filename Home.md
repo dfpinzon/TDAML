@@ -106,7 +106,7 @@ Primary circle model for optical images
 
 The projection of _X(300,30)_ above shows a circle. It is called the optical primary circle and is parameterized as shown above.
 
-We can also consider the 3-circle model, which arises from the dataset _X(15,30)_ that corresponds to a more local estimate of density. This dataset is in the file `Charleston-TDA-ML/persistent-homology/point_clouds/optical_k15_points.txt`. So that the computation finishes, we have asked Ripser to compute only up to scale parameter 1.2 (one can compute larger examples after downloading Ripser to one's machine, as in a later section). Only a subset of the intervals are shown below.
+We can also consider the 3-circle model, which arises from the dataset _X(15,30)_ that corresponds to a more local estimate of density. This dataset is in the file `Charleston-TDA-ML/persistent-homology/point_clouds/optical_k15_points.txt`. So that the computation finishes, we select only 1,000 points from _X(15,30)_, and we have asked Ripser to compute only up to scale parameter 1.2 (one can compute larger examples after downloading Ripser to one's machine, as in a later section). Only a subset of the intervals are shown below.
 ![](https://github.com/henryadams/Charleston-TDA-ML/wiki/optical_k15_points_output0.png)
 ![](https://github.com/henryadams/Charleston-TDA-ML/wiki/optical_k15_points_output1.png)
 The barcodes with one connected component and five 1-dimensional holes correspond to the 3-circle model for the core subset _X(15,30)_. Much more convincing (longer) intervals can be obtained by using more points and computing with Ripser downloaded to your local machine.
@@ -115,13 +115,11 @@ We plot the projection of these points onto the first two linear gradient Discre
 
 ![](https://github.com/henryadams/Charleston-TDA-ML/wiki/nk15c30.png)
 
-Projection of more points from _X(15,30)_
+Projection of (more than 1,000 points) from _X(15,30)_
 
 ![](https://github.com//henryadams/Charleston-TDA-ML/wiki/threeCircle.png)
 
 Three circle model for optical images
-
-The above is called the three-circle primary circle, with its parameterization as shown.
 
 ## Exercises on persistent homology
 
