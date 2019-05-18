@@ -1,11 +1,9 @@
 # Introduction
 
-This tutorial accompanies the TRIPODS Summer Bootcamp: Topology and Machine Learning, https://icerm.brown.edu/tripods/tri18-2-tml/.
+This tutorial accompanies the NSF-CBMS Conference and Software Day on Topological Methods in Machine Learning and Artificial Intelligence, http://blogs.cofc.edu/cbms-tda2019/.
 It was written by Henry Adams, Melissa McGuirl, and Yitzchak Solomon. It relies on code from scikit-learn (http://scikit-learn.org/stable/), Ripser (https://github.com/Ripser/ripser), and a variety of other places, referenced throughout the text.
 
 If you code up a cool related example, please let us know and we may add it to this repository!
-
-Here is a link to Isaac's recommended restaurants! https://docs.google.com/document/d/1c1hfA6Wlp5qIpu3G1Q-zyHq1jOLHCTyHsex17_UHKg4/edit?usp=sharing
 
 # Python
 
@@ -14,180 +12,6 @@ The code in this repository is written in Python.
 Installing and running new code is annoying, especially if it is in a language (perhaps Python) that is unfamiliar to you. Nevertheless, we believe that it is extremely important for all practitioners of machine learning to have some exposure to Python. For this reason, the time you spend getting python running on your machine is time well spent, even though this can feel like a frustrating investment of time.
 
 If you don't yet have Python, and if you are a PC user, then we recommend installing Anaconda (https://www.anaconda.com/download/#macos). If you don't yet have Python, and if you are a Mac user, then we recommend installing Python 2.7.15 at (https://www.python.org/downloads/release/python-2715/). We expect the code to work with an existing version of Python that you may happen to have already.
-
-# Machine learning
-
-The code in this section is taken and modified from http://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html. For further examples of machine learning with scikit-learn, see http://scikit-learn.org/stable/tutorial/basic/tutorial.html and http://scikit-learn.org/stable/user_guide.html.
-
-## Classifying
-
-Classifying is a supervised task in machine learning. Given a collection of labeled data points, how do we build a classifier such that when given a new unlabeled data point, we can predict its label with high accuracy? There are a wide variety of classifying techniques.
-
-Open a terminal on your machine, and change directories to the `Top-ML/machine-learning` folder.
-
-In the terminal, try typing the following command.
-
-```
-python classifier_compare.py
-```
-
-You will get a long list of warnings; please ignore those warnings. The code takes about a second to run. You should get something like the following image as output!
-
-![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/classifier_compare.png)
-
-The first column is the input data, the next three columns show a K nearest neighbors classification for different values of K, and the final three columns show Support Vector Machine (SVM) classifiers, with linear, radial, and polynomial kernels.
-
-## Clustering
-
-Clustering is an unsupervised method in machine learning. Given a collection of (unlabeled) data, how do we best divide the data into clusters, where data points within the same cluster are similar to each other? There are a wide variety of clustering techniques, a few of which we visualize now.
-
-Still in the `Top-ML/machine-learning` folder, try typing the following command into the terminal.
-```
-python cluster_compare.py
-```
-
-You will get a long list of warnings; please ignore those warnings. The code takes less than 30 seconds to run. You should get something like the following image as output!
-
-![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/cluster_compare.png)
-
-The first column is the input data, the second column is the output from a K means clustering, the third column is the output from a spectral clustering algorithm, and the third column is the output from an average linkage clustering algorithm.
-
-If you're adventurous, try changing the number of clusters (on lines 39-40 of `cluster_compare.py` from 2 to 3. After doing so, you should instead get output such as the following.
-```
-python cluster_compare.py
-```
-
-![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/cluster_compare3.png)
-
-
-## Exercises on machine learning
-
-### Classification algorithms (supervised learning)
-
-1. Read through `classifier_compare.py` and understand what is is doing.
-
-2. Run the code by typing `python classifier_compare.py` into your terminal window. What do you observe? Comment on how each algorithm works on the different data sets. Why do some algorithms work better on some data sets than others? Also note the accuracy of each algorithm is specified in the bottom right corner of each plot.
-
-3. Modify the code to test the following:
-* K-nearest neighbor with K = 2
-* K-nearest neighbor with K = 20
-* Support vector machine with a sigmoid kernel function
-* Support vector machine with a 3rd degree polynomial
-Comment on the results.
-
-4. Python has an interesting dataset containing information about 3 different types of irises’ (Setosa, Versicolour, and Virginica) petal and sepal length. The code for importing this data and extracting the first two features is:
-```
-iris = datasets.load_iris()
-X = iris.data[:, :2]
-y = iris.target
-```
-Apply a support vector machine and k-means classifier to this new data set. Vary the kernels and parameters to find the best classifier for this data set.
-
-5. Sklearn also gives us the option to use custom-made kernels. We can do this using the following code as an example:
-```
-def my_kernel(X, Y):
-     K = np.dot(X, Y.T)
-     return K
-clf = svm.SVC(kernel=my_kernel)
-```
-Come up with your own custom kernel and apply it to a data set of your choice. How does your kernel compare to the other built-in kernels applied to this data?
-
-### Clustering algorithms (unsupervised learning)
-
-1. Read through `cluster_compare.py` and understand what is is doing.
-
-2. Run the code by typing `python cluster_compare.py` into your terminal window. What do you observe? Comment on how each algorithm works on the different data sets. Why do some algorithms work better on some data sets than others? Also note the computation time of each algorithm is specified in the bottom right corner of each plot.
-
-3. Increase the noise in the construction of the moon and circle data sets and re-run the code. What do you notice?
-
-4. Change the number of clusters (or K for K-means) to 3. Re-run the code. What happens?
-
-5. While K-means is efficient, Mini-Batch K-Means clustering is an even faster implementation of k-means. Modify cluster_compare.py to also appy Mini-Batch K-Means to the data-sets. The syntax for initiating this algorithm is:
-
-```
-cluster.MiniBatchKMeans(n_clusters=2)
-```
-
-How do the computation times of k-means and Mini-batch k-means compare? What if you increase the size of the data set from 1500 to 5000? How do the kmeans algorithms compare to spectral clustering and average linkage clustering in terms of computation time?
-
-6. As above, apply clustering algorithms of your choice to the first two features of Python’s iris data set. Comment on the results.
-
-7. As we can see, having to know the number of clusters in your dataset is restrictive. DBSCAN is a clustering algorithm that does not require you to specify the number of clusters in your data–it finds them for you! All you have to specify is the maximum distance (epsilon) between two samples in order for them to be in the same cluster. Try applying DBSCAN to the three datasets in this code for varying values of epsilon using
-
-```
-cluster.DBSCAN(eps=epsilon)
-```
-
-Can you find an epsilon that identifies the correct number of clusters across all data sets?
-
-
-# Topological feature vectors - Euler curves
-
-Slides can be found [here.](https://www.math.brown.edu/~ysolomon/topvec.pdf)
-
-This section contains python code to use the SECT (Smooth Euler Characteristic Transform) to compare images. For some theoretical results on the SECT, please see the paper _Functional data analysis using a topological summary statistic: The smooth Euler characteristic transform_ at (https://arxiv.org/pdf/1611.06818.pdf) by Crawford, Monod, Chen, Mukherjee, and Rabadan.
-
-## MNIST Example
-
-MNIST is a dataset of hand-written digits. The following image is from wikipedia (https://en.wikipedia.org/wiki/MNIST_database).
-
-![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/MnistExamples.png)
-
-At the webpage https://pjreddie.com/projects/mnist-in-csv/, download the MNIST training and testing csv files, which will be titled `mnist_test.csv` and `mnist_train.csv`. Copy these files into the `Top-ML/topological-feature-vectors/euler-curves` folder.
-
-Change directories to this same `euler-curves` folder. In your terminal, try running the command
-```
-python mnist.py
-```
-To get the above command to work, you first may need to install the progressbar package, perhaps via the command  `pip install progressbar` (potentially with a sudo out front, if you are daring, depending on your permissions).
-This command takes around two minutes to run. You should git output like the following.
-```
-Generating EC for Test Set
-Run: 100% |||||||||||||||||||||||||||||||||||||||||||||||||| Time: 0:00:05  17.79  B/s
-Complete!
-Generating EC for Train Set
-Run: 100% |||||||||||||||||||||||||||||||||||||||||||||||||| Time: 0:00:12  16.61  B/s
-Complete!
-Computing mutual distances...
-Run: 100% |||||||||||||||||||||||||||||||||||||||||||||||||| Time: 0:00:12   7.83  B/s
-Complete!
-Generating labels...
-Run: 100% |||||||||||||||||||||||||||||||||||||||||||||||||| Time: 0:00:00   4.58 kB/s
-Complete!
-Accuracy on the test set: 86%
-```
-This code computes the Euler characteristic curves for three directions on the MNIST training and testing data, using 200 training images and 100 testing images. It then predicts a label on the test data using K-nearest-neighbor, where distances are computed between Euler characteristic curves. This model identifies the digit in the test set with (around) 86% accuracy. It is possible to improve this to over 90% accuracy by increasing the training time and adding directions. It is important to note that this is nowhere near the state-of-the-art; it is not difficult to find classifiers on the MNIST data set that achieve an accuracy within a few percentage points of 100%!
-
-## Devanagari Example
-
-The following image of Devanagari script, which is used in India and Nepal, is from wikipedia (https://en.wikipedia.org/wiki/Devanagari). We will use a dataset with 36 different characters.
-
-![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/Chandas_typeface_specimen.png)
-
-We perform a similar classification task on the Devanagari script. At the webpage https://archive.ics.uci.edu/ml/datasets/Devanagari+Handwritten+Character+Dataset, download the folder at the link "Data Folder". The result should be called `DevanagariHandwritenCharacterDataset.zip`; unzip this folder and place it in the `Top-ML/topological-feature-vectors/euler-curves` folder.
-
-In your terminal, try running the command
-```
-python devanagari.py
-```
-To get the above command to work, you first may need to install the imageio and progressbar packages, perhaps via the commands `pip install imageio` and `pip install progressbar` (potentially with a sudo out front, if you are daring, depending on your permissions).
-This command takes around five minutes to run. You should git output like the following.
-```
-Generating EC for Test Set
-Run: 100% |||||||||||||||||||||||||||||||||||||||||||||||||| Time: 0:00:36   5.00  B/s
-Complete!
-Generating EC for Train Set
-Run: 100% |||||||||||||||||||||||||||||||||||||||||||||||||| Time: 0:00:58   6.13  B/s
-Complete!
-Computing mutual distances...
-Run: 100% |||||||||||||||||||||||||||||||||||||||||||||||||| Time: 0:00:14  12.84  B/s
-Complete!
-Generating labels...
-Run: 100% |||||||||||||||||||||||||||||||||||||||||||||||||| Time: 0:00:00   3.32 kB/s
-Complete!
-Accuracy on the test set: 68.0%
-```
-This code computes the Euler characteristic curves for 12 directions, 10 training images and 5 testing images per letter. It then predicts a label on the test data using K-nearest-neighbor, where distances are computed between Euler characteristic curves. This model identifies the character in the test set with (around) 68% accuracy. This is fairly good on a classification task with 36 classes (36 different characters), as random guessing would give under 3% accuracy. It is possible to improve our accuracy to over 80% accuracy by increasing the training time.
 
 
 
@@ -393,6 +217,74 @@ One way to produce a projective plane is to take the unit sphere _S<sup>2</sup>_
 
 Write a Python script (or code in another language)  that selects 1,000 random points from the unit sphere _S<sup>2</sup>_ in _R<sup>3</sup>_ and then computes the 1,000 x 1,000 distance matrix for these points under the induced metric on the projective plane. Use Ripser to compute the persistent homology of this metric space.
 
+# Topological feature vectors - Euler curves
+
+Slides can be found [here.](https://www.math.brown.edu/~ysolomon/topvec.pdf)
+
+This section contains python code to use the SECT (Smooth Euler Characteristic Transform) to compare images. For some theoretical results on the SECT, please see the paper _Functional data analysis using a topological summary statistic: The smooth Euler characteristic transform_ at (https://arxiv.org/pdf/1611.06818.pdf) by Crawford, Monod, Chen, Mukherjee, and Rabadan.
+
+## MNIST Example
+
+MNIST is a dataset of hand-written digits. The following image is from wikipedia (https://en.wikipedia.org/wiki/MNIST_database).
+
+![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/MnistExamples.png)
+
+At the webpage https://pjreddie.com/projects/mnist-in-csv/, download the MNIST training and testing csv files, which will be titled `mnist_test.csv` and `mnist_train.csv`. Copy these files into the `Top-ML/topological-feature-vectors/euler-curves` folder.
+
+Change directories to this same `euler-curves` folder. In your terminal, try running the command
+```
+python mnist.py
+```
+To get the above command to work, you first may need to install the progressbar package, perhaps via the command  `pip install progressbar` (potentially with a sudo out front, if you are daring, depending on your permissions).
+This command takes around two minutes to run. You should git output like the following.
+```
+Generating EC for Test Set
+Run: 100% |||||||||||||||||||||||||||||||||||||||||||||||||| Time: 0:00:05  17.79  B/s
+Complete!
+Generating EC for Train Set
+Run: 100% |||||||||||||||||||||||||||||||||||||||||||||||||| Time: 0:00:12  16.61  B/s
+Complete!
+Computing mutual distances...
+Run: 100% |||||||||||||||||||||||||||||||||||||||||||||||||| Time: 0:00:12   7.83  B/s
+Complete!
+Generating labels...
+Run: 100% |||||||||||||||||||||||||||||||||||||||||||||||||| Time: 0:00:00   4.58 kB/s
+Complete!
+Accuracy on the test set: 86%
+```
+This code computes the Euler characteristic curves for three directions on the MNIST training and testing data, using 200 training images and 100 testing images. It then predicts a label on the test data using K-nearest-neighbor, where distances are computed between Euler characteristic curves. This model identifies the digit in the test set with (around) 86% accuracy. It is possible to improve this to over 90% accuracy by increasing the training time and adding directions. It is important to note that this is nowhere near the state-of-the-art; it is not difficult to find classifiers on the MNIST data set that achieve an accuracy within a few percentage points of 100%!
+
+## Devanagari Example
+
+The following image of Devanagari script, which is used in India and Nepal, is from wikipedia (https://en.wikipedia.org/wiki/Devanagari). We will use a dataset with 36 different characters.
+
+![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/Chandas_typeface_specimen.png)
+
+We perform a similar classification task on the Devanagari script. At the webpage https://archive.ics.uci.edu/ml/datasets/Devanagari+Handwritten+Character+Dataset, download the folder at the link "Data Folder". The result should be called `DevanagariHandwritenCharacterDataset.zip`; unzip this folder and place it in the `Top-ML/topological-feature-vectors/euler-curves` folder.
+
+In your terminal, try running the command
+```
+python devanagari.py
+```
+To get the above command to work, you first may need to install the imageio and progressbar packages, perhaps via the commands `pip install imageio` and `pip install progressbar` (potentially with a sudo out front, if you are daring, depending on your permissions).
+This command takes around five minutes to run. You should git output like the following.
+```
+Generating EC for Test Set
+Run: 100% |||||||||||||||||||||||||||||||||||||||||||||||||| Time: 0:00:36   5.00  B/s
+Complete!
+Generating EC for Train Set
+Run: 100% |||||||||||||||||||||||||||||||||||||||||||||||||| Time: 0:00:58   6.13  B/s
+Complete!
+Computing mutual distances...
+Run: 100% |||||||||||||||||||||||||||||||||||||||||||||||||| Time: 0:00:14  12.84  B/s
+Complete!
+Generating labels...
+Run: 100% |||||||||||||||||||||||||||||||||||||||||||||||||| Time: 0:00:00   3.32 kB/s
+Complete!
+Accuracy on the test set: 68.0%
+```
+This code computes the Euler characteristic curves for 12 directions, 10 training images and 5 testing images per letter. It then predicts a label on the test data using K-nearest-neighbor, where distances are computed between Euler characteristic curves. This model identifies the character in the test set with (around) 68% accuracy. This is fairly good on a classification task with 36 classes (36 different characters), as random guessing would give under 3% accuracy. It is possible to improve our accuracy to over 80% accuracy by increasing the training time.
+
 # Topological feature vectors - persistent homology and machine learning
 
 There are by now a wide variety of ways to incorporate persistent homology information into feature vectors for a machine learning task (Adcock et al 2016, Adams et al 2017, Atienza 2018, Bendich et al 2016, Bubenik 2015, Bubenik & Dlotko 2016, Carriere et al 2015, Carriere & Bauer 2018, Carriere et al 2018, Chazal & Divol 2018, Chen et al 2015, Chevyrev et al 2018, Chung et al 2009, Di Fabio & Ferri 2015, Hofer et al 2017, Kalisnik 2018, Reininghaus et al 2015, Skraba 2018, Topaz et al 2015, Zeppelzauer et al 2016). We tersely describe a few of these approaches.
@@ -445,6 +337,114 @@ Can we classify images?
 * Try classifying or clustering fruit with this dataset: https://www.kaggle.com/moltean/fruits
 
 Using SciPy, we can apply scipy.ndimage.imread (https://docs.scipy.org/doc/scipy-0.13.0/reference/generated/scipy.ndimage.imread.html) to read in image data into Python. 
+
+
+
+# Machine learning
+
+The code in this section is taken and modified from http://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html. For further examples of machine learning with scikit-learn, see http://scikit-learn.org/stable/tutorial/basic/tutorial.html and http://scikit-learn.org/stable/user_guide.html.
+
+## Classifying
+
+Classifying is a supervised task in machine learning. Given a collection of labeled data points, how do we build a classifier such that when given a new unlabeled data point, we can predict its label with high accuracy? There are a wide variety of classifying techniques.
+
+Open a terminal on your machine, and change directories to the `Top-ML/machine-learning` folder.
+
+In the terminal, try typing the following command.
+
+```
+python classifier_compare.py
+```
+
+You will get a long list of warnings; please ignore those warnings. The code takes about a second to run. You should get something like the following image as output!
+
+![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/classifier_compare.png)
+
+The first column is the input data, the next three columns show a K nearest neighbors classification for different values of K, and the final three columns show Support Vector Machine (SVM) classifiers, with linear, radial, and polynomial kernels.
+
+## Clustering
+
+Clustering is an unsupervised method in machine learning. Given a collection of (unlabeled) data, how do we best divide the data into clusters, where data points within the same cluster are similar to each other? There are a wide variety of clustering techniques, a few of which we visualize now.
+
+Still in the `Top-ML/machine-learning` folder, try typing the following command into the terminal.
+```
+python cluster_compare.py
+```
+
+You will get a long list of warnings; please ignore those warnings. The code takes less than 30 seconds to run. You should get something like the following image as output!
+
+![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/cluster_compare.png)
+
+The first column is the input data, the second column is the output from a K means clustering, the third column is the output from a spectral clustering algorithm, and the third column is the output from an average linkage clustering algorithm.
+
+If you're adventurous, try changing the number of clusters (on lines 39-40 of `cluster_compare.py` from 2 to 3. After doing so, you should instead get output such as the following.
+```
+python cluster_compare.py
+```
+
+![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/cluster_compare3.png)
+
+
+## Exercises on machine learning
+
+### Classification algorithms (supervised learning)
+
+1. Read through `classifier_compare.py` and understand what is is doing.
+
+2. Run the code by typing `python classifier_compare.py` into your terminal window. What do you observe? Comment on how each algorithm works on the different data sets. Why do some algorithms work better on some data sets than others? Also note the accuracy of each algorithm is specified in the bottom right corner of each plot.
+
+3. Modify the code to test the following:
+* K-nearest neighbor with K = 2
+* K-nearest neighbor with K = 20
+* Support vector machine with a sigmoid kernel function
+* Support vector machine with a 3rd degree polynomial
+Comment on the results.
+
+4. Python has an interesting dataset containing information about 3 different types of irises’ (Setosa, Versicolour, and Virginica) petal and sepal length. The code for importing this data and extracting the first two features is:
+```
+iris = datasets.load_iris()
+X = iris.data[:, :2]
+y = iris.target
+```
+Apply a support vector machine and k-means classifier to this new data set. Vary the kernels and parameters to find the best classifier for this data set.
+
+5. Sklearn also gives us the option to use custom-made kernels. We can do this using the following code as an example:
+```
+def my_kernel(X, Y):
+     K = np.dot(X, Y.T)
+     return K
+clf = svm.SVC(kernel=my_kernel)
+```
+Come up with your own custom kernel and apply it to a data set of your choice. How does your kernel compare to the other built-in kernels applied to this data?
+
+### Clustering algorithms (unsupervised learning)
+
+1. Read through `cluster_compare.py` and understand what is is doing.
+
+2. Run the code by typing `python cluster_compare.py` into your terminal window. What do you observe? Comment on how each algorithm works on the different data sets. Why do some algorithms work better on some data sets than others? Also note the computation time of each algorithm is specified in the bottom right corner of each plot.
+
+3. Increase the noise in the construction of the moon and circle data sets and re-run the code. What do you notice?
+
+4. Change the number of clusters (or K for K-means) to 3. Re-run the code. What happens?
+
+5. While K-means is efficient, Mini-Batch K-Means clustering is an even faster implementation of k-means. Modify cluster_compare.py to also appy Mini-Batch K-Means to the data-sets. The syntax for initiating this algorithm is:
+
+```
+cluster.MiniBatchKMeans(n_clusters=2)
+```
+
+How do the computation times of k-means and Mini-batch k-means compare? What if you increase the size of the data set from 1500 to 5000? How do the kmeans algorithms compare to spectral clustering and average linkage clustering in terms of computation time?
+
+6. As above, apply clustering algorithms of your choice to the first two features of Python’s iris data set. Comment on the results.
+
+7. As we can see, having to know the number of clusters in your dataset is restrictive. DBSCAN is a clustering algorithm that does not require you to specify the number of clusters in your data–it finds them for you! All you have to specify is the maximum distance (epsilon) between two samples in order for them to be in the same cluster. Try applying DBSCAN to the three datasets in this code for varying values of epsilon using
+
+```
+cluster.DBSCAN(eps=epsilon)
+```
+
+Can you find an epsilon that identifies the correct number of clusters across all data sets?
+
 
 
 # Bibliography
