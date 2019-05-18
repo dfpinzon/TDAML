@@ -113,11 +113,11 @@ The barcodes with one connected component and five 1-dimensional holes correspon
 
 We plot the projection of these points onto the first two linear gradient Discrete Cosine Transform basis vectors.
 
-![](https://github.com/henryadams/Charleston-TDA-MLwiki/nk15c30.png)
+![](https://github.com/henryadams/Charleston-TDA-ML/nk15c30.png)
 
 Projection of more points from _X(15,30)_
 
-![](https://github.com//henryadams/Charleston-TDA-MLwiki/threeCircle.png)
+![](https://github.com//henryadams/Charleston-TDA-ML/threeCircle.png)
 
 Three circle model for optical images
 
