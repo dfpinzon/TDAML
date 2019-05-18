@@ -30,7 +30,7 @@ The easiest way to run Ripser is in a live demo in your browser, for which no in
 For example, we can use Ripser to compute the persistent homology of the Vietoris-Rips complex of the following 5 points in the plane.
 ![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/houseCoord.png)
 
-The file house_distances.txt is in the folder `Top-ML/persistent-homology/distance_matrices`. It is the 5x5 distance matrix corresponding to the following collection of 5 points in the plane; the entries of this file are
+The file house_distances.txt is in the folder ``Charleston-TDA-ML/persistent-homology/distance_matrices`. It is the 5x5 distance matrix corresponding to the following collection of 5 points in the plane; the entries of this file are
 ```
 0, 2.0000, 2.8284, 2.0000, 3.1623
 2.0000, 0, 2.0000, 2.8284, 3.1623
@@ -48,7 +48,7 @@ Note that the 5 connected components merge into one, with merging events happeni
 
 ### House example - point cloud
 
-Instead of loading a distance matrix, it is also possible to to load in a set of points in Euclidean space, listed by their Euclidean coordinates. See for example the file `house_points.txt` in the folder `Top-ML/persistent-homology/point_clouds`. It is the 5x2 matrix corresponding to the same collection of 5 points in the plane. To input a point cloud in Ripser live, simply select the option `point cloud` instead of `distance matrix`. You will get the same output as above!
+Instead of loading a distance matrix, it is also possible to to load in a set of points in Euclidean space, listed by their Euclidean coordinates. See for example the file `house_points.txt` in the folder `Charleston-TDA-ML/persistent-homology/point_clouds`. It is the 5x2 matrix corresponding to the same collection of 5 points in the plane. To input a point cloud in Ripser live, simply select the option `point cloud` instead of `distance matrix`. You will get the same output as above!
 ![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/house_points_input.png)
 
 ### Torus example
@@ -61,7 +61,7 @@ Note that the long barcodes (roughly between scale parameter 0.7 and 1.5) recove
 
 ### Sphere example, with a python script to create the points
 
-Change directory to `Top-ML/persistent-homology`. Enter the following command into the terminal.
+Change directory to `Charleston-TDA-ML/persistent-homology`. Enter the following command into the terminal.
 ```
 python sphere_points.py
 ```
@@ -86,7 +86,7 @@ The  cyclooctane molecule C<sub>8</sub>H<sub>16</sub> consists of a ring of 8 ca
 
 Zomorodian (2012) uses the cyclooctane dataset as an example to show that we can efficiently recover the homology groups of the conformation space using persistent homology. In this section we essentially follow Zomorodian's example. We begin with a sample of 1,000 points on the conformation space (this data is publicly available at Shawn Martin's webpage http://www.sandia.gov/~smartin/software.html) and compute the resulting persistent homology. We obtain the Betti numbers _Betti<sub>0</sub> = Betti<sub>1</sub> = 1_ and _Betti<sub>2</sub> = 2_, which match the homology groups of the union of a sphere with a Klein bottle, glued together along two circles of singularities.
 
-The following example computes the persistent homology barcodes of 1,000 points from the configuration space of cyclooctane molecules in _R<sup>24</sup>. This dataset is in the file `Top-ML/persistent-homology/point_clouds/cyclooctane_points.txt`. So that the computation finishes, we have asked Ripser to compute only up to scale parameter 1.3 (one can compute larger examples after downloading Ripser to one's machine, as in a later section). Only a subset of the intervals are shown below.
+The following example computes the persistent homology barcodes of 1,000 points from the configuration space of cyclooctane molecules in _R<sup>24</sup>. This dataset is in the file `Charleston-TDA-ML/persistent-homology/point_clouds/cyclooctane_points.txt`. So that the computation finishes, we have asked Ripser to compute only up to scale parameter 1.3 (one can compute larger examples after downloading Ripser to one's machine, as in a later section). Only a subset of the intervals are shown below.
 ![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/cyclooctane_points_output0.png)
 ![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/cyclooctane_points_output1.png)
 ![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/cyclooctane_points_output2.png)
@@ -98,7 +98,7 @@ This is an example with a real dataset of optical image patch data.
 
 The optical image database collected by van Hateren and van der Schaaf (1998) contains black and white digital photographs from a variety of indoor and outdoor scenes. Lee et al. (2003) study _3 x 3_ patches from these images, and Carlsson et al. (2008) continue the analysis of image patches using persistent homology. Carlsson et al. (2008) begin with a large collection of high-contrast, normalized _3 x 3_ pixel patches, each thought of as a point in _R<sup>9</sup>_. They change to the Discrete Cosine Transform (DCT) basis, which maps the patches to the unit sphere _S<sup>7</sup>_ in _R<sup>8</sup>_. They select from this space the 30% densest vectors, where density is based on the distance from a point to its 300th nearest neighbor. In Carlsson et al. (2008), this dense core subset is denoted _X(300,30)_. In the next example we verify the result from Carlsson et al. (2008): _X(300,30)_ has the topology of a circle.
 
-The following example computes the persistent homology barcodes of 1,000 points from _X(300,30)_. This dataset is in the file `Top-ML/persistent-homology/point_clouds/optical_k300_points.txt`. So that the computation finishes, we have asked Ripser to compute only up to scale parameter 1.3 (one can compute larger examples after downloading Ripser to one's machine, as in a later section). Only a subset of the intervals are shown below.
+The following example computes the persistent homology barcodes of 1,000 points from _X(300,30)_. This dataset is in the file `Charleston-TDA-ML/persistent-homology/point_clouds/optical_k300_points.txt`. So that the computation finishes, we have asked Ripser to compute only up to scale parameter 1.3 (one can compute larger examples after downloading Ripser to one's machine, as in a later section). Only a subset of the intervals are shown below.
 ![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/optical_k300_points_output0.png)
 ![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/optical_k300_points_output1.png)
 The long barcodes (roughly between scale parameter 0.5 and 1.25), with one connected component and one 1-dimensional hole, have the homology of a circle. This is good evidence that the core subset _X(300,30)_ is well-approximated by a circle. 
@@ -124,7 +124,7 @@ cd ripser
 make
 ./ripser examples/sphere_3_192.lower_distance_matrix
 ```
-For convenience, copy the Unix executable file `ripser` into the folder `Top-ML/persistent-homology`. You can use the flag ``--format distances`` to specify you are computing on a distance matrix, or ``--format point-cloud`` to specify you are computing on a point cloud. The flag ``--dim k`` specifies that homology is computed only up to dimension _k_, and the flag ``--threshold t`` specifies that persistent homology is computed only up to scale parameter _t_. For example, we can recreate all of the examples above with the following commands.
+For convenience, copy the Unix executable file `ripser` into the folder `Charleston-TDA-ML/persistent-homology`. You can use the flag ``--format distances`` to specify you are computing on a distance matrix, or ``--format point-cloud`` to specify you are computing on a point cloud. The flag ``--dim k`` specifies that homology is computed only up to dimension _k_, and the flag ``--threshold t`` specifies that persistent homology is computed only up to scale parameter _t_. For example, we can recreate all of the examples above with the following commands.
 
 House example on the distance matrix:
 ```
@@ -161,7 +161,7 @@ Melissa Mcguirl has written very nice code for using Ripser with Python, which i
 
 Alternatively, there is a Cython wrapper for Ripser available which might be more efficient and better for non-Linux machines. The wrapper is available here: https://pypi.org/project/ripser/
 
-Change directories to the `Top-ML/persistent-homology` folder. Copy the Ripser executable into this folder (or alternatively, make sure that ripser is in your Python path, and then in line 45 of `getBarCodes.py`, change "./ripser
+Change directories to the `Charleston-TDA-ML/persistent-homology` folder. Copy the Ripser executable into this folder (or alternatively, make sure that ripser is in your Python path, and then in line 45 of `getBarCodes.py`, change "./ripser
  to "ripser"). In your terminal, try running the command
 ```
 python getBarCodes.py -i distance_matrices/ -o ripser_outputs/
@@ -229,7 +229,7 @@ MNIST is a dataset of hand-written digits. The following image is from wikipedia
 
 ![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/MnistExamples.png)
 
-At the webpage https://pjreddie.com/projects/mnist-in-csv/, download the MNIST training and testing csv files, which will be titled `mnist_test.csv` and `mnist_train.csv`. Copy these files into the `Top-ML/topological-feature-vectors/euler-curves` folder.
+At the webpage https://pjreddie.com/projects/mnist-in-csv/, download the MNIST training and testing csv files, which will be titled `mnist_test.csv` and `mnist_train.csv`. Copy these files into the `Charleston-TDA-ML/topological-feature-vectors/euler-curves` folder.
 
 Change directories to this same `euler-curves` folder. In your terminal, try running the command
 ```
@@ -260,7 +260,7 @@ The following image of Devanagari script, which is used in India and Nepal, is f
 
 ![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/Chandas_typeface_specimen.png)
 
-We perform a similar classification task on the Devanagari script. At the webpage https://archive.ics.uci.edu/ml/datasets/Devanagari+Handwritten+Character+Dataset, download the folder at the link "Data Folder". The result should be called `DevanagariHandwritenCharacterDataset.zip`; unzip this folder and place it in the `Top-ML/topological-feature-vectors/euler-curves` folder.
+We perform a similar classification task on the Devanagari script. At the webpage https://archive.ics.uci.edu/ml/datasets/Devanagari+Handwritten+Character+Dataset, download the folder at the link "Data Folder". The result should be called `DevanagariHandwritenCharacterDataset.zip`; unzip this folder and place it in the `Charleston-TDA-ML/topological-feature-vectors/euler-curves` folder.
 
 In your terminal, try running the command
 ```
@@ -307,7 +307,7 @@ This should open a window in an internet browser. In this browser window, change
 
 ## 6 shape classes
 
-Change directory to the folder `Top-ML/topological-feature-vectors/data-6-shape-classes`. This subfolder contains persistence diagram data for 6 shape classes: (1) A unit cube (2) A circle of diameter one (3) A sphere of diameter one (4) Three clusters with centers randomly chosen in the unit cube (5) Three clusters within three clusters (6) A torus with a major diameter of one and a minor diameter of one half. These shape classes are described in Section 6.1 of the paper "Persistence Images: A Stable Vector Representation of Persistent Homology"
+Change directory to the folder `Charleston-TDA-ML/topological-feature-vectors/data-6-shape-classes`. This subfolder contains persistence diagram data for 6 shape classes: (1) A unit cube (2) A circle of diameter one (3) A sphere of diameter one (4) Three clusters with centers randomly chosen in the unit cube (5) Three clusters within three clusters (6) A torus with a major diameter of one and a minor diameter of one half. These shape classes are described in Section 6.1 of the paper "Persistence Images: A Stable Vector Representation of Persistent Homology"
 
 ![](https://github.com/ICERM-TRIPODS-Top-ML/Top-ML/wiki/6ShapeClasses.png)
 
@@ -348,7 +348,7 @@ The code in this section is taken and modified from http://scikit-learn.org/stab
 
 Classifying is a supervised task in machine learning. Given a collection of labeled data points, how do we build a classifier such that when given a new unlabeled data point, we can predict its label with high accuracy? There are a wide variety of classifying techniques.
 
-Open a terminal on your machine, and change directories to the `Top-ML/machine-learning` folder.
+Open a terminal on your machine, and change directories to the `Charleston-TDA-ML/machine-learning` folder.
 
 In the terminal, try typing the following command.
 
@@ -366,7 +366,7 @@ The first column is the input data, the next three columns show a K nearest neig
 
 Clustering is an unsupervised method in machine learning. Given a collection of (unlabeled) data, how do we best divide the data into clusters, where data points within the same cluster are similar to each other? There are a wide variety of clustering techniques, a few of which we visualize now.
 
-Still in the `Top-ML/machine-learning` folder, try typing the following command into the terminal.
+Still in the `Charleston-TDA-ML/machine-learning` folder, try typing the following command into the terminal.
 ```
 python cluster_compare.py
 ```
